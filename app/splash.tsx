@@ -12,7 +12,7 @@ export default function Splash() {
       if (signedUp === "true") {
         router.replace("/(tabs)/home");
       } else {
-        router.replace("/signup");
+        router.replace("/(auth)/login");
       }
     }, 2500); // 2.5 seconds delay
 
