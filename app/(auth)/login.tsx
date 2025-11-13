@@ -1,5 +1,5 @@
 import { Link, router } from "expo-router";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword, User } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { auth } from "../../config/firebase";
@@ -10,7 +10,7 @@ export default function Login() {
 
   // Auto-redirect if already logged in
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       if (user) {
         router.replace("/(tabs)/home"); // ✅ Redirect to main app after login
       }
